@@ -15,6 +15,9 @@ docker run -d -p 22222:22 -p 6080:6080 -p 6001:6001 -p 5900:5900 -e USER_NAME="m
 # With 6080 port for web vnc Only
 docker run -d -p 6080:6080 -e USER_NAME="myname" -e USER_PASSWORD="mypass" docker-related/lxde-vnc-ubuntu
 
+# with language support
+docker run -d -p 6080:6080 -e USER_NAME="myname" -e USER_PASSWORD="mypass" -e LANG="zh_CN.UTF-8" docker-related/lxde-vnc-ubuntu
+
 if whithout -e USER_NAME="myname" -e USER_PASSWORD="mypass",
 will create default Username: user Password: pass.
 
@@ -26,7 +29,9 @@ if you want change the password,just change the file /home/[USER_NAME]/.vncpass 
 
 
 and
+
 docker stop [container_ID]
+
 docker start [container_ID]
 
 Have fun!
