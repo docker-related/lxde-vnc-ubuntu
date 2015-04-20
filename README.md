@@ -18,6 +18,15 @@ docker run -d -p 6080:6080 -e USER_NAME="myname" -e USER_PASSWORD="mypass" docke
 if whithout -e USER_NAME="myname" -e USER_PASSWORD="mypass",
 will create default Username: user Password: pass.
 
+# VNC Password
+[username]@[password]
+Like when whithout -e USER_NAME="myname" -e USER_PASSWORD="mypass",
+the default password is: myname@mypass
+if you want change the password,just change the file /home/[USER_NAME]/.vncpass .
+and
+	docker stop [container_ID]
+	docker start [container_ID]
+
 Have fun!
 
 
