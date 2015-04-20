@@ -3,17 +3,17 @@ Add simple  VNC password authentication
 
 This is a Bug fix version，Base on offical ubuntu 14.04(trusty) and some of Community code， 100% work.
 
-======Build======
+# Build
 
-docker build --rm -t  ekee/ubuntu-lxde-vnc ubuntu-lxde-vnc
+docker build --rm -t  docker-related/lxde-vnc-ubuntu lxde-vnc-ubuntu
 
-======Run======
+# Run
 
-======Width ssh & vnc port and 6080 port for web vnc======
-docker run -d -p 22222:22 -p 6080:6080 -p 6001:6001 -p 5900:5900 -e USER_NAME="myname" -e USER_PASSWORD="mypass" ekee/ubuntu-lxde-vnc
+# Width ssh & vnc port and 6080 port for web vnc
+docker run -d -p 22222:22 -p 6080:6080 -p 6001:6001 -p 5900:5900 -e USER_NAME="myname" -e USER_PASSWORD="mypass" docker-related/lxde-vnc-ubuntu
 
-======With 6080 port for web vnc Only======
-docker run -d -p 6080:6080 -e USER_NAME="myname" -e USER_PASSWORD="mypass" ekee/ubuntu-lxde-vnc
+# With 6080 port for web vnc Only
+docker run -d -p 6080:6080 -e USER_NAME="myname" -e USER_PASSWORD="mypass" docker-related/lxde-vnc-ubuntu
 
 if whithout -e USER_NAME="myname" -e USER_PASSWORD="mypass",
 will create default Username: user Password: pass.
