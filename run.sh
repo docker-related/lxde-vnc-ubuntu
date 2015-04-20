@@ -35,10 +35,6 @@ $USER_PASSWORD
 $USER_PASSWORD
 EOF
 
-passwd root <<EOF >/dev/null 2>&1
-root
-root
-EOF
 stop_service
 export DISPLAY=:1 
 export HOME="/home/$USER_NAME"
@@ -62,3 +58,4 @@ start-stop-daemon --start --quiet --pidfile /var/run/x11vnc.pid --background --e
 EOF
 [ -d /proc/$(cat /var/run/noVNC.pid) ] && start-stop-daemon --start --quiet --pidfile /var/run/noVNC.pid --background --exec /noVNC/utils/launch.sh
 exec /usr/sbin/sshd -D
+

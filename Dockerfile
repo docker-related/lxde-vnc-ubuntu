@@ -13,7 +13,7 @@ RUN apt-get update \
         lxde x11vnc xvfb \
         gtk2-engines-murrine ttf-ubuntu-font-family ttf-wqy-zenhei \
         libreoffice firefox \
-		lxdm \
+	lxdm \
     && apt-get autoclean \
     && apt-get autoremove \
     && rm -rf /var/lib/apt/lists/*
