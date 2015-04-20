@@ -52,10 +52,10 @@ ps aux | grep -q lxdm || start-stop-daemon --background --quiet --pidfile /var/r
 su $USER_NAME <<EOF
 export DISPLAY=:1 
 export HOME="/home/$USER_NAME"
-[ -f /var/run/Xvfb.pid ] || start-stop-daemon --start --background --pidfile /var/run/Xvfb.pid --background --exec /usr/bin/Xvfb -- :1 -screen 0 1024x640x16
-[ -f /var/run/lxsession.pid ] || start-stop-daemon --start --background --pidfile /var/run/lxsession.pid --background --exec /usr/bin/lxsession -- -s LXDE -e LXDE
-[ -f /var/run/x11vnc.pid ] || start-stop-daemon --start --background --pidfile /var/run/x11vnc.pid --background --exec /usr/bin/x11vnc -- -xkb -forever -display :1 -passwdfile /home/$USER_NAME/.vncpass
+pidof /usr/bin/Xvfb || start-stop-daemon --start --background --pidfile /var/run/Xvfb.pid --background --exec /usr/bin/Xvfb -- :1 -screen 0 1024x640x16
+pidof /usr/bin/lxsession || start-stop-daemon --start --background --pidfile /var/run/lxsession.pid --background --exec /usr/bin/lxsession -- -s LXDE -e LXDE
+pidof /usr/bin/x11vnc || start-stop-daemon --start --background --pidfile /var/run/x11vnc.pid --background --exec /usr/bin/x11vnc -- -xkb -forever -display :1 -passwdfile /home/$USER_NAME/.vncpass
 EOF
-[ -f /var/run/noVNC.pid ] || start-stop-daemon --start --quiet --pidfile /var/run/noVNC.pid --background --exec /noVNC/utils/launch.sh
+ps aux | grep -q "/noVNC/utils/launch.sh" || start-stop-daemon --start --quiet --pidfile /var/run/noVNC.pid --background --exec /noVNC/utils/launch.sh
 exec /usr/sbin/sshd -D
 
