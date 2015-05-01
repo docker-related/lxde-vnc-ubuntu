@@ -56,6 +56,6 @@ pidof /usr/bin/Xvfb || start-stop-daemon --start --background --pidfile /var/run
 pidof /usr/bin/lxsession || start-stop-daemon --start --background --pidfile /var/run/lxsession.pid --background --exec /usr/bin/lxsession -- -s LXDE -e LXDE
 pidof /usr/bin/x11vnc || start-stop-daemon --start --background --pidfile /var/run/x11vnc.pid --background --exec /usr/bin/x11vnc -- -xkb -forever -display :1 -passwdfile /home/$USER_NAME/.vncpass
 EOF
-ps aux | grep -q "/noVNC/utils/launch.sh" || start-stop-daemon --start --quiet --pidfile /var/run/noVNC.pid --background --exec /noVNC/utils/launch.sh
+ps aux | grep -v grep  | grep -q "/noVNC/utils/launch.sh" || start-stop-daemon --start --quiet --pidfile /var/run/noVNC.pid --background --exec /noVNC/utils/launch.sh
 exec /usr/sbin/sshd -D
 
